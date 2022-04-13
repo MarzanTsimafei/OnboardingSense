@@ -1,4 +1,4 @@
-package com.example.onboardingsense
+package com.example.onboardingsense.Fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,7 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import com.example.onboardingsense.databinding.FragmentBringBinding
+import com.example.onboardingsense.AdaptersAndViewModel.DataViewModel
+import com.example.onboardingsense.AdaptersAndViewModel.FragmentScreens
 import com.example.onboardingsense.databinding.FragmentStressTypeBinding
 
 

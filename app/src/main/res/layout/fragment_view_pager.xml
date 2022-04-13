@@ -23,9 +23,10 @@
         android:id="@+id/indicator"
         android:layout_width="419dp"
         android:layout_height="230dp"
+        app:ci_margin = "10dp"
         android:background="@color/trans"
-        app:ci_height = "20dp"
-        app:ci_width = "20dp"
+        app:ci_height = "15dp"
+        app:ci_width = "15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">

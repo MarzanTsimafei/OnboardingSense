@@ -1,4 +1,4 @@
-package com.example.onboardingsense
+package com.example.onboardingsense.AdaptersAndViewModel
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,6 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import com.example.onboardingsense.Fragments.BringFragment
+import com.example.onboardingsense.Fragments.StressTypeFragment
+import com.example.onboardingsense.Fragments.WorriesFragment
 import com.example.onboardingsense.databinding.FragmentViewPagerBinding
 
 
@@ -33,10 +36,11 @@ class ViewPagerFragment : Fragment() {
 
 
         val fragmentList = arrayListOf<Fragment>(
-            WelcomeFragment(),
+
             BringFragment(),
             StressTypeFragment(),
-            WorriesFragment()
+            WorriesFragment(),
+
         )
 
         val adapter = ViewPagerAdapterSense(
@@ -44,7 +48,7 @@ class ViewPagerFragment : Fragment() {
             requireActivity().supportFragmentManager,
             lifecycle
         )
-
+        binding.viewPagerFragment.isUserInputEnabled = false
         binding.viewPagerFragment.adapter = adapter
 
 

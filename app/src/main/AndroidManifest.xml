@@ -10,7 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OnboardingSense">
         <activity
-            android:name=".MainActivity"
+            android:name=".Activities.MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.WelcomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,4 +1,4 @@
-package com.example.onboardingsense
+package com.example.onboardingsense.AdaptersAndViewModel
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
