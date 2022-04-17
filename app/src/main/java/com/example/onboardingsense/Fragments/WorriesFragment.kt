@@ -37,7 +37,7 @@ class WorriesFragment : Fragment() {
 
             binding.btnCont.setOnClickListener {
 
-                val intent = Intent (getActivity(), PayActivity::class.java)
+                val intent = Intent (getActivity(), PersonalizeActivity::class.java)
                 getActivity()?.startActivity(intent)
             }
 
