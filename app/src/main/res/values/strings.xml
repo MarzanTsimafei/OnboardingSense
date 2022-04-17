@@ -25,4 +25,10 @@
     <string name="oftenworries">What worries you more often?</string>
 
 
+    <string name="unique">A unique midfulness program, developed by professional psychologists</string>
+    <string name="personalize">We are personalizing your data</string>
+    <string name="heatlh">We do not provide medical advice</string>
+    <string name="analyze">We analyze your health data to give you lifestyle tips. It is not a substitute for professional medical advice</string>
+
+
 </resources>

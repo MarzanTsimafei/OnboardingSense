@@ -1,11 +1,15 @@
 package com.example.onboardingsense.Fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import com.example.onboardingsense.Activities.MainActivity
+import com.example.onboardingsense.Activities.PayActivity
+import com.example.onboardingsense.Activities.PersonalizeActivity
 import com.example.onboardingsense.AdaptersAndViewModel.DataViewModel
 import com.example.onboardingsense.databinding.FragmentWorriesBinding
 
@@ -30,6 +34,14 @@ class WorriesFragment : Fragment() {
 
         override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
             super.onViewCreated(view, savedInstanceState)
+
+            binding.btnCont.setOnClickListener {
+
+                val intent = Intent (getActivity(), PayActivity::class.java)
+                getActivity()?.startActivity(intent)
+            }
+
+
             }
         }
 

@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OnboardingSense">
         <activity
+            android:name=".Activities.PayActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.PersonalizeActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activities.MainActivity"
             android:exported="false" />
         <activity
