@@ -185,11 +185,16 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/button8"
-        android:layout_width="343dp"
-        android:layout_height="65dp"
-        android:layout_marginBottom="110dp"
-        android:text="Button"
+        android:id="@+id/btnTry"
+        android:layout_width="379dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="105dp"
+        android:background="@drawable/btn_continue"
+        android:text="@string/tryforfree"
+        android:textAllCaps="false"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -201,7 +206,7 @@
         android:layout_marginStart="48dp"
         android:layout_marginBottom="65dp"
         android:text="@string/payment"
-        android:textColor="@color/white"
+        android:textColor="@color/textcolor"
         android:textSize="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -213,7 +218,7 @@
         android:layout_marginStart="48dp"
         android:layout_marginBottom="45dp"
         android:text="@string/terms"
-        android:textColor="@color/white"
+        android:textColor="@color/textcolor"
         android:textSize="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -225,7 +230,7 @@
         android:layout_marginEnd="48dp"
         android:layout_marginBottom="65dp"
         android:text="@string/cancel"
-        android:textColor="@color/white"
+        android:textColor="@color/textcolor"
         android:textSize="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -237,7 +242,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginBottom="45dp"
         android:text="@string/purchase"
-        android:textColor="@color/white"
+        android:textColor="@color/textcolor"
         android:textSize="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView15" />
@@ -249,7 +254,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginBottom="45dp"
         android:text="@string/policy"
-        android:textColor="@color/white"
+        android:textColor="@color/textcolor"
         android:textSize="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView17" />

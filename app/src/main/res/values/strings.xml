@@ -39,6 +39,11 @@
     <string name="terms">Terms of Use</string>
     <string name="purchase">Restore purchase</string>
     <string name="policy">Privacy policy</string>
+    <string name="tryforfree">Try for FREE</string>
 
+    <string name="short_meditation">Short Meditation</string>
+
+    <string name="responses">Recommended based on your responses</string>
+    <string name="later">Later</string>
 
 </resources>
