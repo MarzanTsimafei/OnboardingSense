@@ -30,5 +30,15 @@
     <string name="heatlh">We do not provide medical advice</string>
     <string name="analyze">We analyze your health data to give you lifestyle tips. It is not a substitute for professional medical advice</string>
 
+    <string name="paytv1">Measure stress level, get custom recommendations</string>
+    <string name="paytv2"> Fall asleep instantly, surrounded by sounds of nature</string>
+    <string name="paytv3">No more anxiety —  meditation will make your life inspiring and colourful ️</string>
+
+    <string name="payment">Periodic payment</string>
+    <string name="cancel">Cancel any time on the App Store</string>
+    <string name="terms">Terms of Use</string>
+    <string name="purchase">Restore purchase</string>
+    <string name="policy">Privacy policy</string>
+
 
 </resources>
