@@ -9,5 +9,8 @@ class DataViewModel: ViewModel() {
     val posFrag: MutableLiveData<Int> by lazy{
         MutableLiveData<Int>()
     }
+    val rewivewPos: MutableLiveData<Int> by lazy{
+        MutableLiveData<Int>()
+    }
 
 }

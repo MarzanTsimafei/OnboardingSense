@@ -1,11 +1,10 @@
 <resources>
     <string name="app_name">OnboardingSense</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="welcome">Welcome!</string>
     <string name="what_brings">What brings you to Sense?</string>
     <string name="we_recognize">We’ll personalize recommendations based on your goals </string>
+    <string name="we_recognize_2">We’ll personalize recommendations based on your situation </string>
     <string name="anxiety">Cope With Anxiety</string>
     <string name="sleep">Better Sleep</string>
     <string name="stress">Reduce Stress</string>
@@ -17,33 +16,78 @@
     <string name="emotional">Emotional</string>
     <string name="acute">Acute</string>
     <string name="chronic">Chronic</string>
-    <string name="health">Health</string>
+    <string name="health_button">Health</string>
     <string name="work">Work</string>
     <string name="relationship">Relationship</string>
     <string name="elsesmth">Something else</string>
     <string name="typeofstress">What type of stress are you experiencing?</string>
     <string name="oftenworries">What worries you more often?</string>
-
-
     <string name="unique">A unique midfulness program, developed by professional psychologists</string>
     <string name="personalize">We are personalizing your data</string>
     <string name="heatlh">We do not provide medical advice</string>
     <string name="analyze">We analyze your health data to give you lifestyle tips. It is not a substitute for professional medical advice</string>
-
     <string name="paytv1">Measure stress level, get custom recommendations</string>
     <string name="paytv2"> Fall asleep instantly, surrounded by sounds of nature</string>
     <string name="paytv3">No more anxiety —  meditation will make your life inspiring and colourful ️</string>
-
     <string name="payment">Periodic payment</string>
     <string name="cancel">Cancel any time on the App Store</string>
     <string name="terms">Terms of Use</string>
     <string name="purchase">Restore purchase</string>
     <string name="policy">Privacy policy</string>
     <string name="tryforfree">Try for FREE</string>
-
     <string name="short_meditation">Short Meditation</string>
-
     <string name="responses">Recommended based on your responses</string>
     <string name="later">Later</string>
+    <string name="over_100_original_nature_sounds_you_can_mix_however_you_want">Over 100 original nature sounds you can mix however you want</string>
+    <string name="measure_your_stress_level_get_content_recommendations_based_on_energy_and_stress_levels">Measure your stress level get content recommendations based on energy and stress levels</string>
+    <string name="monthly">Monthly</string>
+    <string name="_6_99">$ 6.99</string>
+    <string name="free_7_day_trial">Free 7 Day Trial</string>
+    <string name="yearly_59_99">Yearly $59.99</string>
+    <string name="_4_99_month">$ 4.99/month</string>
+    <string name="free_14_day_trial">Free 14 Day Trial</string>
+
+
+    <string name="review0">A must have!!!</string>
+    <string name="review1">So relaxing  ❤</string>
+    <string name="review2">Stress-test is 🔥</string>
+    <string name="review3">🙌 Breathing practice  </string>
+    <string name="review4">Very helpful for my mind. </string>
+    <string name="review5">Lots of wonderful features</string>
+    <string name="review6">Very effective.</string>
+    <string name="review7">Helps to relax</string>
+    <string name="review8">Fall asleep much easier</string>
+    <string name="review9">Amazing..Seriously..</string>
+    <string name="review10">Helped in hard times</string>
+    <string name="review11">Love it so much 💜 </string>
+    <string name="review12">Life changing</string>
+    <string name="reviewtext0">"It provides a stillness and centeredness in the midst of our world that moves at breakneck speeds.  "</string>
+    <string name="reviewtext1">It\'s an indispensable part of my daily practice. Don\'t get on your cushion without it.</string>
+    <string name="reviewtext2">The ability to test stress lvl and get personalized meditations is wonderful</string>
+    <string name="reviewtext3">"I appreciate being able to forget the time and sink into another space.  "</string>
+    <string name="reviewtext4">"This is a great way for me to get my meditation in throughout the day.  "</string>
+    <string name="reviewtext5">Nice app for encouraging meditation. Guided meditations and breath practices are great.</string>
+    <string name="reviewtext6">I love all the features and sometimes use the pulse-stress-test to get my daily recommendations.</string>
+    <string name="reviewtext7">"Breath practice and pulse-stress-test helps to cope with my anxiety and stress. "</string>
+    <string name="reviewtext8">"I have been using it for about a week and already see changes in my condition "</string>
+    <string name="reviewtext9">Really like that I can use both ready-made meditations and create my own melodies</string>
+    <string name="reviewtext10">I look forward every morning to my special time to meditate with it. It is my gift to myself.</string>
+    <string name="reviewtext11">The guided meditations are very convenient with themes to choose from.</string>
+    <string name="reviewtext12">It has everything for a great pastime with yourself</string>
+    <string name="name0">jülie</string>
+    <string name="name1">"AriMag "</string>
+    <string name="name2">Meled90</string>
+    <string name="name3">blestina</string>
+    <string name="name4">CatKeish</string>
+    <string name="name5">Zhanende</string>
+    <string name="name6">Jonchan</string>
+    <string name="name7">minylinn</string>
+    <string name="name8">Ayah Elhassany</string>
+    <string name="name9">M.Bader Algadwi</string>
+    <string name="name10">Wia</string>
+    <string name="name11">libby_03</string>
+    <string name="name12">Bobby Martino</string>
+    <string name="senseofthe">Sense  the World</string>
+
 
 </resources>
