@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/monthly"
+        android:layout_width="143dp"
+        android:layout_height="143dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="286dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <io.alterac.blurkit.BlurLayout
+            android:id="@+id/monthly1"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="3dp"
+            android:layout_marginBottom="3dp"
+            app:blk_blurRadius="15"
+            app:blk_cornerRadius="15dp"
+            app:blk_downscaleFactor="0.08"
+            app:blk_fps="60"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="14dp"
+                android:paddingTop="23dp"
+                android:text="@string/monthly"
+                android:textSize="24dp"
+                android:textStyle="bold"></TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="14dp"
+                android:paddingTop="51dp"
+                android:text="@string/_6_99"
+                android:textSize="20dp"
+                android:textStyle="bold"></TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="14dp"
+                android:paddingTop="102dp"
+                android:text="@string/free_7_day_trial"
+                android:textSize="16dp"
+                android:textStyle="bold"></TextView>
+        </io.alterac.blurkit.BlurLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <io.alterac.blurkit.BlurLayout
+        android:layout_width="80dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="275dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:blk_blurRadius="15"
+        app:blk_cornerRadius="10dp"
+        app:blk_downscaleFactor="0.08"
+        app:blk_fps="60">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/popular"
+            android:layout_gravity="center"
+            android:textAllCaps="true"
+            android:textSize="16dp"
+            android:textStyle="bold">
+        </TextView>
+
+    </io.alterac.blurkit.BlurLayout>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="80dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/pay_image" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/yearly"
+        android:layout_width="143dp"
+        android:layout_height="143dp"
+        android:layout_marginTop="272dp"
+        android:layout_marginEnd="28dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <io.alterac.blurkit.BlurLayout
+            android:id="@+id/yearly1"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="2dp"
+            app:blk_blurRadius="15"
+            app:blk_cornerRadius="15dp"
+            app:blk_downscaleFactor="0.08"
+            app:blk_fps="60"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingTop="23dp"
+                android:text="@string/yearly_59_99"
+                android:textSize="20dp"
+                android:textStyle="bold"></TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="14dp"
+                android:paddingTop="51dp"
+                android:text="@string/_4_99_month"
+                android:textSize="16dp"
+                android:textStyle="bold"></TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingTop="102dp"
+                android:text="@string/free_14_day_trial"
+                android:textSize="16dp"
+                android:textStyle="bold"></TextView>
+        </io.alterac.blurkit.BlurLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <io.alterac.blurkit.BlurLayout
+        android:layout_width="110dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="260dp"
+        android:layout_marginEnd="45dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:blk_blurRadius="20"
+        app:blk_cornerRadius="10dp"
+        app:blk_downscaleFactor="0.08"
+        app:blk_fps="60">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/best"
+            android:layout_gravity="center"
+            android:textAllCaps="true"
+            android:textSize="16dp"
+            android:textStyle="bold">
+        </TextView>
+    </io.alterac.blurkit.BlurLayout>
+
+    <io.alterac.blurkit.BlurLayout
+
+        android:layout_width="50dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="405dp"
+        android:layout_marginEnd="75dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:blk_blurRadius="20"
+        app:blk_cornerRadius="10dp"
+        app:blk_downscaleFactor="0.08"
+        app:blk_fps="60">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/persent"
+            android:layout_gravity="center"
+            android:textAllCaps="true"
+            android:textSize="16dp"
+            android:textStyle="bold">
+        </TextView>
+    </io.alterac.blurkit.BlurLayout>
+
+    <TextView
+        android:id="@+id/imageView6"
+        android:layout_width="237dp"
+        android:layout_height="116dp"
+        android:layout_marginTop="115dp"
+        android:layout_marginEnd="16dp"
+        android:textStyle="bold"
+        android:textSize="44dp"
+        android:textColor="@android:color/white"
+        android:gravity="right"
+        android:text="@string/senseofthe"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="11dp"
+        android:textSize="14dp"
+        android:layout_marginTop="38dp"
+        android:text="@string/paytv1"
+        android:textColor="@android:color/white"
+        app:layout_constraintStart_toEndOf="@+id/imageView8"
+        app:layout_constraintTop_toBottomOf="@+id/monthly" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="20dp"
+        android:textSize="14dp"
+        android:text="@string/paytv2"
+        android:textColor="@android:color/white"
+        app:layout_constraintStart_toEndOf="@+id/imageView7"
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="326dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/paytv3"
+        android:textColor="@android:color/white"
+        android:textSize="14dp"
+        app:layout_constraintStart_toEndOf="@+id/imageView9"
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="17dp"
+        android:layout_height="17dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView8"
+        app:srcCompat="@drawable/heart_image" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="17dp"
+        android:layout_height="17dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/monthly"
+        app:srcCompat="@drawable/heart_image" />
+
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="17dp"
+        android:layout_height="17dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView7"
+        app:srcCompat="@drawable/heart_image" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="610dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/reviews_view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="80dp"
+            android:paddingEnd="80dp"
+            ></androidx.viewpager2.widget.ViewPager2>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginBottom="65dp"
+        android:text="@string/payment"
+        android:textColor="@color/textcolor"
+        android:textSize="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginBottom="45dp"
+        android:text="@string/terms"
+        android:textColor="@color/textcolor"
+        android:textSize="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="65dp"
+        android:text="@string/cancel"
+        android:textColor="@color/textcolor"
+        android:textSize="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="45dp"
+        android:text="@string/purchase"
+        android:textColor="@color/textcolor"
+        android:textSize="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView15" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="45dp"
+        android:text="@string/policy"
+        android:textColor="@color/textcolor"
+        android:textSize="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView17" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

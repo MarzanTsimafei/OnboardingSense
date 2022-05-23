@@ -32,12 +32,13 @@ class MainActivity : AppCompatActivity() {
             .replace(idHolder, f)
             .commit()
     }
-
     override fun onBackPressed() {
         var a: Int = dataModel.posFrag.value!!
         dataModel.posFrag.value = a - 1
         when(a){
-            0->super.onBackPressed()
+            0->super.onBackPressed() }
+        if(a>2){
+            super.onBackPressed()
         }
     }
 }

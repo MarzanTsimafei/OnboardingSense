@@ -16,6 +16,7 @@ import com.example.onboardingsense.R
 import com.example.onboardingsense.databinding.FragmentViewPagerBinding
 import android.animation.ObjectAnimator
 import android.os.Handler
+import android.view.MotionEvent
 import com.example.onboardingsense.AdaptersAndViewModel.DataViewModel
 import com.example.onboardingsense.AdaptersAndViewModel.FragmentScreens
 import com.example.onboardingsense.AdaptersAndViewModel.ViewPagerAdapterSense
@@ -168,6 +169,11 @@ class ViewPagerFragment : Fragment() {
                 FragmentScreens.FRAGMENT_PERSONALIZE.currentFragmentScreen -> dataModel.posFrag.value = FragmentScreens.FRAGMENT_PAY.currentFragmentScreen
             }
         }
+        binding.scrollView.setOnTouchListener(object : View.OnTouchListener {
+            override fun onTouch(v: View?, event: MotionEvent?): Boolean {
+                return true
+            }
+        })
     }
 
     fun ViewPager2.setCurrentItem(

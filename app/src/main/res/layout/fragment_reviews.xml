@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Fragments.ReviewsFragment">
+
+    <io.alterac.blurkit.BlurLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToOutline="true"
+        android:textAllCaps="false"
+        app:blk_blurRadius="20"
+        app:blk_cornerRadius="20dp"
+        app:blk_downscaleFactor="0.08"
+        app:blk_fps="60">
+
+        <TextView
+            android:id="@+id/tv_rewiev_first"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_review_color_first"
+            android:layout_marginLeft="16dp"
+            android:text="Great App!">
+        </TextView>
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:id="@+id/imv"
+            android:src="@drawable/star_reviews"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="16dp">
+        </ImageView>
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/star_reviews"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="66dp">
+        </ImageView>
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/star_reviews"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="91dp">
+        </ImageView>
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/star_reviews"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="116dp">
+        </ImageView>
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/star_reviews"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="41dp">
+        </ImageView>
+
+        <TextView
+            android:id="@+id/tv_rewiev"
+            android:textSize="12dp"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_review_color"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="42dp"
+            android:text="Love the impact this has had on my day to day! Have fully committed to running after finding this.">
+        </TextView>
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_review_color_name"
+            android:layout_marginLeft="170dp"
+            android:layout_marginTop="80dp"
+            android:text="- Jordan R">
+        </TextView>
+    </io.alterac.blurkit.BlurLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
