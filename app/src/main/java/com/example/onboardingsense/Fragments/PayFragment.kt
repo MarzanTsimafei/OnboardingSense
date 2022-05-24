@@ -14,20 +14,23 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
-import com.example.onboardingsense.AdaptersAndViewModel.ReviewsAdapter
+import com.example.onboardingsense.AdaptersAndViewModel.ReviewsDelegate
+import com.example.onboardingsense.AdaptersAndViewModel.ReviewsItemData
+import com.example.onboardingsense.AdaptersAndViewModel.ReviewsItems
 import com.example.onboardingsense.R
 import com.example.onboardingsense.databinding.FragmentPayBinding
+import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
 import java.util.*
 
 
 class PayFragment : Fragment() {
 
     private var _binding: FragmentPayBinding? = null
-    val binding get() = _binding!!
-    var curI : Int = 0
-    private  var reviewList = mutableListOf<String>()
-    private  var reviewTextList = mutableListOf<String>()
-    private  var nameList = mutableListOf<String>()
+    private val binding get() = _binding!!
+    private var itemPosition : Int = 0
+    private val handler = Handler()
+    private val swipeTimer = Timer()
+    val adapter = ListDelegationAdapter(ReviewsDelegate.reviewsDelegate)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,6 +44,15 @@ class PayFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        with(binding){
+            reviewsViewPager.adapter = adapter
+            adapter.apply {
+                items = listOf(ReviewsItems(listOf(ReviewsItemData(0, "0", "0", "0"),
+                    ReviewsItemData(1, "1", "1", "1"))))
+                notifyDataSetChanged()
+            }
+        }
+
         binding.monthly.setOnClickListener{
             binding.monthly.setBackgroundResource(R.drawable.stroke_for_pay)
             binding.yearly.setBackgroundResource(0)
@@ -51,8 +63,6 @@ class PayFragment : Fragment() {
             binding.yearly.setBackgroundResource(R.drawable.stroke_for_pay)
         }
 
-        addToList()
-        binding.reviewsViewPager.adapter = ReviewsAdapter(reviewList,reviewTextList,nameList)
         binding.reviewsViewPager.clipToPadding = false
         binding.reviewsViewPager.clipChildren = false
         binding.reviewsViewPager.offscreenPageLimit = 3
@@ -66,15 +76,14 @@ class PayFragment : Fragment() {
         })
         binding.reviewsViewPager.setPageTransformer(compositePageTransformer)
 
-        val handler = Handler()
         val Update = Runnable {
             if (binding.reviewsViewPager.currentItem == 13) {
                 binding.reviewsViewPager.currentItem  = 0
             }
-            curI++
-            binding.reviewsViewPager.setCurrentItem(curI, 1300, interpolator = AccelerateDecelerateInterpolator())
+            itemPosition++
+            binding.reviewsViewPager.setCurrentItem(itemPosition, 1300, interpolator = AccelerateDecelerateInterpolator())
         }
-        val swipeTimer = Timer()
+
         swipeTimer.schedule(object : TimerTask() {
             override fun run() {
                 handler.post(Update)
@@ -108,48 +117,12 @@ class PayFragment : Fragment() {
         animator.start()
     }
 
-    fun addToList(){
-        reviewList.add(0,getString(R.string.review0))
-        reviewList.add(1,getString(R.string.review1))
-        reviewList.add(2,getString(R.string.review2))
-        reviewList.add(3,getString(R.string.review3))
-        reviewList.add(4,getString(R.string.review4))
-        reviewList.add(5,getString(R.string.review5))
-        reviewList.add(6,getString(R.string.review6))
-        reviewList.add(7,getString(R.string.review7))
-        reviewList.add(8,getString(R.string.review8))
-        reviewList.add(9,getString(R.string.review9))
-        reviewList.add(10,getString(R.string.review10))
-        reviewList.add(11,getString(R.string.review11))
-        reviewList.add(12,getString(R.string.review12))
-
-        reviewTextList.add(0,getString(R.string.reviewtext0))
-        reviewTextList.add(1,getString(R.string.reviewtext1))
-        reviewTextList.add(2,getString(R.string.reviewtext2))
-        reviewTextList.add(3,getString(R.string.reviewtext3))
-        reviewTextList.add(4,getString(R.string.reviewtext4))
-        reviewTextList.add(5,getString(R.string.reviewtext5))
-        reviewTextList.add(6,getString(R.string.reviewtext6))
-        reviewTextList.add(7,getString(R.string.reviewtext7))
-        reviewTextList.add(8,getString(R.string.reviewtext8))
-        reviewTextList.add(9,getString(R.string.reviewtext9))
-        reviewTextList.add(10,getString(R.string.reviewtext10))
-        reviewTextList.add(11,getString(R.string.reviewtext11))
-        reviewTextList.add(12,getString(R.string.reviewtext12))
-
-        nameList.add(0,getString(R.string.name0))
-        nameList.add(1,getString(R.string.name1))
-        nameList.add(2,getString(R.string.name2))
-        nameList.add(3,getString(R.string.name3))
-        nameList.add(4,getString(R.string.name4))
-        nameList.add(5,getString(R.string.name5))
-        nameList.add(6,getString(R.string.name6))
-        nameList.add(7,getString(R.string.name7))
-        nameList.add(8,getString(R.string.name8))
-        nameList.add(9,getString(R.string.name9))
-        nameList.add(10,getString(R.string.name10))
-        nameList.add(11,getString(R.string.name11))
-        nameList.add(12,getString(R.string.name12))
+    override fun onDestroy() {
+        super.onDestroy()
+        swipeTimer.cancel()
+        binding.reviewsViewPager.clearAnimation()
     }
+
+
 }
 

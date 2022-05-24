@@ -5,16 +5,16 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.onboardingsense.AdaptersAndViewModel.DataViewModel
+import com.example.onboardingsense.AdaptersAndViewModel.FragmentScreens
 import com.example.onboardingsense.R
 import com.example.onboardingsense.Fragments.ViewPagerFragment
 import com.example.onboardingsense.databinding.ActivityMainBinding
-
-
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val dataModel: DataViewModel by viewModels()
+    private var positionStep : Int = 1;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,11 +33,12 @@ class MainActivity : AppCompatActivity() {
             .commit()
     }
     override fun onBackPressed() {
-        var a: Int = dataModel.posFrag.value!!
-        dataModel.posFrag.value = a - 1
-        when(a){
-            0->super.onBackPressed() }
-        if(a>2){
+        var currentPosition: Int = dataModel.posFrag.value!!
+        dataModel.posFrag.value = currentPosition - positionStep
+        when(currentPosition){
+            FragmentScreens.FRAGMENT_BRING.currentFragmentScreen->
+                super.onBackPressed() }
+        if(currentPosition>FragmentScreens.FRAGMENT_PERSONALIZE.currentFragmentScreen){
             super.onBackPressed()
         }
     }
