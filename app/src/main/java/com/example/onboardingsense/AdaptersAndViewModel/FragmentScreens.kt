@@ -1,11 +1,14 @@
 package com.example.onboardingsense.AdaptersAndViewModel
 
 enum class FragmentScreens(var currentFragmentScreen: Int) {
-
     FRAGMENT_BRING(0),
     FRAGMENT_STRESS(1),
     FRAGMENT_WORRIES(2),
     FRAGMENT_PERSONALIZE(3),
-    FRAGMENT_PAY(4)
-
+    FRAGMENT_PAY(4),
+    FRAGMENT_BRING_BACKGROUND(1450),
+    FRAGMENT_STRESS_BACKGROUND(2100),
+    FRAGMENT_WORRIES_BACKGROUND(2500),
+    FRAGMENT_PERSONALIZE_BACKGROUND(3000),
+    FRAGMENT_PAY_BACKGROUND(3500),
 }

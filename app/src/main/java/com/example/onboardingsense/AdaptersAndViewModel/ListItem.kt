@@ -1,3 +1,0 @@
-package com.example.onboardingsense.AdaptersAndViewModel
-
-interface ListItem

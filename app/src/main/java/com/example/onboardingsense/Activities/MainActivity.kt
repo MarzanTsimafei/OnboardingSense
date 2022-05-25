@@ -24,7 +24,6 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.hide()
         openFrag(ViewPagerFragment.newInstance(), R.id.fragment)
     }
-
     private fun openFrag(f: Fragment, idHolder: Int) {
         supportFragmentManager
             .beginTransaction()

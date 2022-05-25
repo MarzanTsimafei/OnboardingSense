@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.onboardingsense.databinding.FragmentStressTypeBinding
 
-
 class StressTypeFragment : Fragment() {
 
     private var _binding: FragmentStressTypeBinding? = null
@@ -24,7 +23,5 @@ class StressTypeFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
     }
-
 }

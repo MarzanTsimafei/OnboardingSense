@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.onboardingsense.databinding.FragmentBringBinding
 
-
 class BringFragment : Fragment() {
 
     private var _binding: FragmentBringBinding? = null
@@ -24,6 +23,5 @@ class BringFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
     }
 }
