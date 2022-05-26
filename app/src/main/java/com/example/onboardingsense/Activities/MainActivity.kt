@@ -21,9 +21,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-        supportActionBar?.hide()
         openFrag(ViewPagerFragment.newInstance(), R.id.fragment)
     }
+
     private fun openFrag(f: Fragment, idHolder: Int) {
         supportFragmentManager
             .beginTransaction()
@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity() {
             .replace(idHolder, f)
             .commit()
     }
+
     override fun onBackPressed() {
         var currentPosition: Int = dataModel.posFrag.value!!
         dataModel.posFrag.value = currentPosition - positionStep

@@ -14,9 +14,11 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
+import com.example.onboardingsense.AdaptersAndViewModel.FragmentScreens
 import com.example.onboardingsense.AdaptersAndViewModel.ReviewsAdapter
 import com.example.onboardingsense.R
 import com.example.onboardingsense.databinding.FragmentPayBinding
+import java.lang.Runnable
 import java.util.*
 
 class PayFragment : Fragment() {
@@ -26,6 +28,14 @@ class PayFragment : Fragment() {
     private var itemPosition : Int = 0
     private val handler = Handler()
     private val swipeTimer = Timer()
+    var animator = ValueAnimator.ofInt()
+    val update = Runnable {
+        if (binding.reviewsViewPager.currentItem == FragmentScreens.REVIEWS_COUNT.currentFragmentScreen) {
+            swipeTimer.cancel()
+            }
+        itemPosition++
+        binding.reviewsViewPager.setCurrentItem(itemPosition, 1300, interpolator = AccelerateDecelerateInterpolator())
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,16 +53,21 @@ class PayFragment : Fragment() {
         val reviewText: List <String> = resources.getStringArray(R.array.review_text_list).toList()
         val userName: List <String> = resources.getStringArray(R.array.name_list).toList()
         val adapter = ReviewsAdapter(review,reviewText,userName)
-
         binding.monthly.setOnClickListener{
             binding.monthly.setBackgroundResource(R.drawable.stroke_for_pay)
             binding.yearly.setBackgroundResource(0)
+            animator.cancel()
+            handler.removeCallbacks(update)
+            swipeTimer.cancel()
         }
-
         binding.yearly.setOnClickListener{
             binding.monthly.setBackgroundResource(0)
             binding.yearly.setBackgroundResource(R.drawable.stroke_for_pay)
+            animator.cancel()
+            handler.removeCallbacks(update)
+            swipeTimer.cancel()
         }
+
         binding.reviewsViewPager.adapter = adapter
         binding.reviewsViewPager.clipToPadding = false
         binding.reviewsViewPager.clipChildren = false
@@ -65,22 +80,13 @@ class PayFragment : Fragment() {
             page.scaleY = 0.85f + r * 0.15f
         })
         binding.reviewsViewPager.setPageTransformer(compositePageTransformer)
-
-        val update = Runnable {
-            if (binding.reviewsViewPager.currentItem == 12) {
-                binding.reviewsViewPager.clearAnimation()
-                swipeTimer.cancel()
-            }
-            itemPosition++
-            binding.reviewsViewPager.setCurrentItem(itemPosition, 1300, interpolator = AccelerateDecelerateInterpolator())
-        }
         swipeTimer.schedule(object : TimerTask() {
             override fun run() {
                 handler.post(update)
             }
         }, 2000, 2000)
-        handler.removeCallbacks(update)
     }
+
     fun ViewPager2.setCurrentItem(
         item: Int,
         duration: Long,
@@ -88,7 +94,7 @@ class PayFragment : Fragment() {
         pagePxWidth: Int = (width * 0.60).toInt() // Default value taken from getWidth() from ViewPager2 view
     ) {
         val pxToDrag: Int = pagePxWidth * (item - currentItem)
-        val animator = ValueAnimator.ofInt(0, pxToDrag)
+        animator = ValueAnimator.ofInt(0, pxToDrag)
         var previousValue = 0
         animator.addUpdateListener { valueAnimator ->
             val currentValue = valueAnimator.animatedValue as Int
@@ -106,9 +112,12 @@ class PayFragment : Fragment() {
         animator.duration = duration
         animator.start()
     }
-    override fun onPause() {
-        super.onPause()
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        handler.removeCallbacks(update)
         swipeTimer.cancel()
+        animator.cancel()
     }
 }
 

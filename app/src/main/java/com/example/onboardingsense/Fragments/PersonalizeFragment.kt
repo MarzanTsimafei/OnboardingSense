@@ -7,13 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.coroutineScope
-import androidx.lifecycle.findViewTreeLifecycleOwner
 import com.example.onboardingsense.AdaptersAndViewModel.DataViewModel
 import com.example.onboardingsense.AdaptersAndViewModel.FragmentScreens
+import com.example.onboardingsense.Fragments.DelayOnLifecycle.delayOnLifecycle
 import com.example.onboardingsense.R
 import com.example.onboardingsense.databinding.FragmentPersonalizeBinding
-import kotlinx.coroutines.*
 
 class PersonalizeFragment : Fragment() {
 
@@ -30,13 +28,14 @@ class PersonalizeFragment : Fragment() {
         val view = binding.root
         return view
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.indicatorPerson.show()
         val fadeIn = AnimationUtils.loadAnimation(activity,
-            R.anim.fade_in);
+            R.anim.fade_in)
         val fadeOut = AnimationUtils.loadAnimation(activity,
-            R.anim.fade_out);
+            R.anim.fade_out)
         binding.tvUniq.startAnimation(fadeIn)
         binding.tvUniq.delayOnLifecycle(2500){
             binding.tvUniq.startAnimation(fadeOut)
@@ -53,21 +52,10 @@ class PersonalizeFragment : Fragment() {
             dataModel.posFrag.value = FragmentScreens.FRAGMENT_PAY.currentFragmentScreen
         }
     }
+
     override fun onStop() {
         super.onStop()
         binding.indicatorPerson.hide()
         binding.tvMeassure.clearAnimation()
-    }
-    private fun View.delayOnLifecycle(
-        durationInMillis: Long,
-        dispatcher : CoroutineDispatcher = Dispatchers.Main,
-        block: () -> Unit
-    ): Job? = findViewTreeLifecycleOwner()?.let { lifecycleOwner ->
-        lifecycleOwner.lifecycle.coroutineScope.launch(dispatcher){
-            delay(durationInMillis)
-            if(isActive){
-                block()
-            }
-        }
     }
 }

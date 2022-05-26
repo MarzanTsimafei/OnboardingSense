@@ -1,7 +1,11 @@
 package com.example.onboardingsense.Fragments
 
+import android.animation.Animator
 import android.animation.ObjectAnimator
+import android.animation.TimeInterpolator
+import android.animation.ValueAnimator
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,12 +15,12 @@ import androidx.fragment.app.activityViewModels
 import com.example.onboardingsense.R
 import com.example.onboardingsense.databinding.FragmentViewPagerBinding
 import android.view.MotionEvent
-import androidx.lifecycle.coroutineScope
-import androidx.lifecycle.findViewTreeLifecycleOwner
+import android.view.animation.AccelerateDecelerateInterpolator
+import androidx.viewpager2.widget.ViewPager2
 import com.example.onboardingsense.AdaptersAndViewModel.DataViewModel
 import com.example.onboardingsense.AdaptersAndViewModel.FragmentScreens
 import com.example.onboardingsense.AdaptersAndViewModel.ViewPagerAdapterSense
-import kotlinx.coroutines.*
+import com.example.onboardingsense.Fragments.DelayOnLifecycle.delayOnLifecycle
 
 class ViewPagerFragment : Fragment() {
 
@@ -25,6 +29,7 @@ class ViewPagerFragment : Fragment() {
     val binding get() = _binding!!
     private var animation_duration : Long = 1200
     var backgroundPostiton: Int = 1450
+    var animator = ValueAnimator.ofInt()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,6 +40,7 @@ class ViewPagerFragment : Fragment() {
         val view = binding.root
         return view
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         var fadeOut = AnimationUtils.loadAnimation(activity, R.anim.fade_out)
@@ -56,7 +62,6 @@ class ViewPagerFragment : Fragment() {
             binding.welcomeTextView.visibility = View.VISIBLE
             binding.welcomeTextView.startAnimation(fadeIn)
         }
-
         val fragmentList = arrayListOf<Fragment>(
             BringFragment(),
             StressTypeFragment(),
@@ -72,7 +77,7 @@ class ViewPagerFragment : Fragment() {
         binding.viewPagerFragment.adapter = adapter
         binding.indicator.createIndicators(3, 0)
         dataModel.posFrag.observe(viewLifecycleOwner, {
-            binding.viewPagerFragment.currentItem = it
+            binding.viewPagerFragment.setCurrentItem(it, animation_duration)
             when(it){
                 FragmentScreens.FRAGMENT_BRING.currentFragmentScreen->{
                     backgroundPostiton = FragmentScreens.FRAGMENT_BRING_BACKGROUND.currentFragmentScreen
@@ -165,6 +170,7 @@ class ViewPagerFragment : Fragment() {
             }
         })
     }
+
     private fun animation(){
         val animator = ObjectAnimator.ofInt(binding.scrollView, "scrollX", backgroundPostiton)
         animator.duration = animation_duration
@@ -177,8 +183,35 @@ class ViewPagerFragment : Fragment() {
             }
         }
     }
-    override fun onDestroy() {
-        super.onDestroy()
+
+    fun ViewPager2.setCurrentItem(
+        item: Int,
+        duration: Long,
+        interpolator: TimeInterpolator = AccelerateDecelerateInterpolator(),
+        pagePxWidth: Int = (width) // Default value taken from getWidth() from ViewPager2 view
+    ) {
+        val pxToDrag: Int = pagePxWidth * (item - currentItem)
+        animator = ValueAnimator.ofInt(0, pxToDrag)
+        var previousValue = 0
+        animator.addUpdateListener { valueAnimator ->
+            val currentValue = valueAnimator.animatedValue as Int
+            val currentPxToDrag = (currentValue - previousValue).toFloat()
+            fakeDragBy(-currentPxToDrag)
+            previousValue = currentValue
+        }
+        animator.addListener(object : Animator.AnimatorListener {
+            override fun onAnimationStart(animation: Animator?) { beginFakeDrag() }
+            override fun onAnimationEnd(animation: Animator?) { endFakeDrag() }
+            override fun onAnimationCancel(animation: Animator?) { /* Ignored */ }
+            override fun onAnimationRepeat(animation: Animator?) { /* Ignored */ }
+        })
+        animator.interpolator = interpolator
+        animator.duration = duration
+        animator.start()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
         binding.imageViewVelcome.clearAnimation()
         binding.indicator.clearAnimation()
         binding.btnCont.clearAnimation()
@@ -190,19 +223,9 @@ class ViewPagerFragment : Fragment() {
         binding.button5.clearAnimation()
         binding.button6.clearAnimation()
         binding.button7.clearAnimation()
+        animator.cancel()
     }
-    private fun View.delayOnLifecycle(
-        durationInMillis: Long,
-        dispatcher : CoroutineDispatcher = Dispatchers.Main,
-        block: () -> Unit
-        ): Job? = findViewTreeLifecycleOwner()?.let {lifecycleOwner ->
-        lifecycleOwner.lifecycle.coroutineScope.launch(dispatcher){
-            delay(durationInMillis)
-            if(isActive){
-                block()
-            }
-        }
-    }
+
     companion object{
         @JvmStatic
         fun newInstance() = ViewPagerFragment()
