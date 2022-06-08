@@ -1,6 +1,5 @@
 package com.example.onboardingsense.Fragments
 
-
 import android.view.View
 import androidx.lifecycle.coroutineScope
 import androidx.lifecycle.findViewTreeLifecycleOwner

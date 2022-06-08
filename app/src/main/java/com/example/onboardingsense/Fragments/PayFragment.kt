@@ -67,7 +67,6 @@ class PayFragment : Fragment() {
             handler.removeCallbacks(update)
             swipeTimer.cancel()
         }
-
         binding.reviewsViewPager.adapter = adapter
         binding.reviewsViewPager.clipToPadding = false
         binding.reviewsViewPager.clipChildren = false

@@ -4,17 +4,19 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import com.example.onboardingsense.AdaptersAndViewModel.DataViewModel
 import com.example.onboardingsense.AdaptersAndViewModel.FragmentScreens
 import com.example.onboardingsense.R
 import com.example.onboardingsense.Fragments.ViewPagerFragment
 import com.example.onboardingsense.databinding.ActivityMainBinding
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val dataModel: DataViewModel by viewModels()
-    private var positionStep : Int = 1;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,12 +35,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        var currentPosition: Int = dataModel.posFrag.value!!
-        dataModel.posFrag.value = currentPosition - positionStep
-        when(currentPosition){
-            FragmentScreens.FRAGMENT_BRING.currentFragmentScreen->
+        dataModel.posFrag.onEach {
+            FragmentScreens.CURRENT_POSITION.currentFragmentScreen  = it
+        }
+            .launchIn(lifecycleScope)
+        dataModel.posFrag.tryEmit(FragmentScreens.CURRENT_POSITION.currentFragmentScreen - FragmentScreens.POSITION_STEP.currentFragmentScreen)
+        if(FragmentScreens.CURRENT_POSITION.currentFragmentScreen<FragmentScreens.FRAGMENT_BRING.currentFragmentScreen){
                 super.onBackPressed() }
-        if(currentPosition>FragmentScreens.FRAGMENT_PERSONALIZE.currentFragmentScreen){
+        if(FragmentScreens.CURRENT_POSITION.currentFragmentScreen>=FragmentScreens.FRAGMENT_WORRIES.currentFragmentScreen){
             super.onBackPressed()
         }
     }

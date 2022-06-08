@@ -49,7 +49,7 @@ class PersonalizeFragment : Fragment() {
         binding.tvMeassure.delayOnLifecycle(7500){
             binding.tvMeassure.startAnimation(fadeOut)
             binding.tvNature.clearAnimation()
-            dataModel.posFrag.value = FragmentScreens.FRAGMENT_PAY.currentFragmentScreen
+            dataModel.posFrag.tryEmit(FragmentScreens.FRAGMENT_PAY.currentFragmentScreen)
         }
     }
 

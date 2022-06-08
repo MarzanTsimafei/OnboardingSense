@@ -21,7 +21,4 @@ class ReviewsFragment : Fragment() {
         val view = binding.root
         return view
     }
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-    }
 }

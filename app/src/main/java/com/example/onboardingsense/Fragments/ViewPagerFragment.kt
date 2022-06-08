@@ -5,7 +5,6 @@ import android.animation.ObjectAnimator
 import android.animation.TimeInterpolator
 import android.animation.ValueAnimator
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,11 +15,14 @@ import com.example.onboardingsense.R
 import com.example.onboardingsense.databinding.FragmentViewPagerBinding
 import android.view.MotionEvent
 import android.view.animation.AccelerateDecelerateInterpolator
+import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.widget.ViewPager2
 import com.example.onboardingsense.AdaptersAndViewModel.DataViewModel
 import com.example.onboardingsense.AdaptersAndViewModel.FragmentScreens
 import com.example.onboardingsense.AdaptersAndViewModel.ViewPagerAdapterSense
 import com.example.onboardingsense.Fragments.DelayOnLifecycle.delayOnLifecycle
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 
 class ViewPagerFragment : Fragment() {
 
@@ -30,6 +32,7 @@ class ViewPagerFragment : Fragment() {
     private var animation_duration : Long = 1200
     var backgroundPostiton: Int = 1450
     var animator = ValueAnimator.ofInt()
+    var showAnimationOrNot: Boolean = true
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -76,62 +79,68 @@ class ViewPagerFragment : Fragment() {
         binding.viewPagerFragment.isUserInputEnabled = false
         binding.viewPagerFragment.adapter = adapter
         binding.indicator.createIndicators(3, 0)
-        dataModel.posFrag.observe(viewLifecycleOwner, {
-            binding.viewPagerFragment.setCurrentItem(it, animation_duration)
-            when(it){
-                FragmentScreens.FRAGMENT_BRING.currentFragmentScreen->{
-                    backgroundPostiton = FragmentScreens.FRAGMENT_BRING_BACKGROUND.currentFragmentScreen
-                    binding.indicator.animatePageSelected(0)
-                    binding.textView.text = getString(R.string.what_brings)
-                    binding.textView2.text = getString(R.string.we_recognize)
-                    binding.button4.startAnimation(fadeIn)
-                    binding.button7.startAnimation(fadeIn)
-                    animation()
+        dataModel.posFrag
+            .onEach {
+                binding.viewPagerFragment.setCurrentItem(it, animation_duration)
+                when(it){
+                    FragmentScreens.FRAGMENT_BRING.currentFragmentScreen->{
+                        showAnimationOrNot = true
+                        backgroundPostiton = FragmentScreens.FRAGMENT_BRING_BACKGROUND.currentFragmentScreen
+                        binding.indicator.animatePageSelected(0)
+                        binding.textView.text = getString(R.string.what_brings)
+                        binding.textView2.text = getString(R.string.we_recognize)
+                        binding.button4.startAnimation(fadeIn)
+                        binding.button7.startAnimation(fadeIn)
+                        animation()
+                    }
+                    FragmentScreens.FRAGMENT_STRESS.currentFragmentScreen->{
+                        binding.indicator.animatePageSelected(1)
+                            if(showAnimationOrNot){
+                                binding.button4.startAnimation(fadeOut)
+                                binding.button7.startAnimation(fadeOut) }
+                        binding.textView.text = getString(R.string.typeofstress)
+                        binding.textView2.text = getString(R.string.we_recognize_2)
+                        binding.textButton2.text = getString(R.string.physical)
+                        binding.textButton3.text = getString(R.string.emotional)
+                        binding.textButton4.text = getString(R.string.acute)
+                        binding.textButton5.text = getString(R.string.chronic)
+                        backgroundPostiton = FragmentScreens.FRAGMENT_STRESS_BACKGROUND.currentFragmentScreen
+                        animation()
+                    }
+                    FragmentScreens.FRAGMENT_WORRIES.currentFragmentScreen->{
+                        binding.indicator.animatePageSelected(2)
+                        binding.textView.text = getString(R.string.oftenworries)
+                        binding.textView2.text = getString(R.string.we_recognize_2)
+                        binding.textButton2.text = getString(R.string.health_button)
+                        binding.textButton3.text = getString(R.string.work)
+                        binding.textButton4.text = getString(R.string.relationship)
+                        binding.textButton5.text = getString(R.string.elsesmth)
+                        backgroundPostiton = FragmentScreens.FRAGMENT_WORRIES_BACKGROUND.currentFragmentScreen
+                        animation()
+                    }
+                    FragmentScreens.FRAGMENT_PERSONALIZE.currentFragmentScreen->{
+                        binding.indicator.removeAllViews()
+                        binding.textView.startAnimation(fadeOut)
+                        binding.textView2.startAnimation(fadeOut)
+                        binding.btnCont.startAnimation(fadeOut)
+                        binding.button2.startAnimation(fadeOut)
+                        binding.button3.startAnimation(fadeOut)
+                        binding.button5.startAnimation(fadeOut)
+                        binding.button6.startAnimation(fadeOut)
+                        backgroundPostiton = FragmentScreens.FRAGMENT_PERSONALIZE_BACKGROUND.currentFragmentScreen
+                        animation()
+                    }
+                    FragmentScreens.FRAGMENT_PAY.currentFragmentScreen-> {
+                        binding.btnCont.startAnimation(fadeIn)
+                        binding.btnCont.text = getString(R.string.tryforfree)
+                        backgroundPostiton = FragmentScreens.FRAGMENT_PAY_BACKGROUND.currentFragmentScreen
+                        animation()
+                    }
                 }
-                FragmentScreens.FRAGMENT_STRESS.currentFragmentScreen->{
-                    binding.indicator.animatePageSelected(1)
-                    binding.textView.text = getString(R.string.typeofstress)
-                    binding.textView2.text = getString(R.string.we_recognize_2)
-                    binding.button4.startAnimation(fadeOut)
-                    binding.button7.startAnimation(fadeOut)
-                    binding.textButton2.text = getString(R.string.physical)
-                    binding.textButton3.text = getString(R.string.emotional)
-                    binding.textButton4.text = getString(R.string.acute)
-                    binding.textButton5.text = getString(R.string.chronic)
-                    backgroundPostiton = FragmentScreens.FRAGMENT_STRESS_BACKGROUND.currentFragmentScreen
-                    animation()
-                }
-                FragmentScreens.FRAGMENT_WORRIES.currentFragmentScreen->{
-                    binding.indicator.animatePageSelected(2)
-                    binding.textView.text = getString(R.string.oftenworries)
-                    binding.textView2.text = getString(R.string.we_recognize_2)
-                    binding.textButton2.text = getString(R.string.health_button)
-                    binding.textButton3.text = getString(R.string.work)
-                    binding.textButton4.text = getString(R.string.relationship)
-                    binding.textButton5.text = getString(R.string.elsesmth)
-                    backgroundPostiton = FragmentScreens.FRAGMENT_WORRIES_BACKGROUND.currentFragmentScreen
-                    animation()
-                }
-                FragmentScreens.FRAGMENT_PERSONALIZE.currentFragmentScreen->{
-                    binding.indicator.removeAllViews()
-                    binding.textView.startAnimation(fadeOut)
-                    binding.textView2.startAnimation(fadeOut)
-                    binding.btnCont.startAnimation(fadeOut)
-                    binding.button2.startAnimation(fadeOut)
-                    binding.button3.startAnimation(fadeOut)
-                    binding.button5.startAnimation(fadeOut)
-                    binding.button6.startAnimation(fadeOut)
-                    backgroundPostiton = FragmentScreens.FRAGMENT_PERSONALIZE_BACKGROUND.currentFragmentScreen
-                    animation()
-                }
-                FragmentScreens.FRAGMENT_PAY.currentFragmentScreen-> {
-                    binding.btnCont.startAnimation(fadeIn)
-                    binding.btnCont.text = getString(R.string.tryforfree)
-                    backgroundPostiton = FragmentScreens.FRAGMENT_PAY_BACKGROUND.currentFragmentScreen
-                    animation()
-                }
+
             }
-        })
+            .launchIn(lifecycleScope)
+
         binding.btnCont.setOnClickListener {
             binding.btnCont.isClickable = false
             binding.btnCont.delayOnLifecycle(animation_duration){
@@ -143,18 +152,21 @@ class ViewPagerFragment : Fragment() {
             binding.imageViewVelcome.visibility = View.GONE
             when(binding.viewPagerFragment.currentItem){
                 FragmentScreens.FRAGMENT_BRING.currentFragmentScreen -> {
-                    dataModel.posFrag.value = FragmentScreens.FRAGMENT_STRESS.currentFragmentScreen
+                    dataModel.posFrag.tryEmit(FragmentScreens.FRAGMENT_STRESS.currentFragmentScreen)
+                    binding.button4.visibility = View.VISIBLE
+                    binding.button7.visibility = View.VISIBLE
                 }
                 FragmentScreens.FRAGMENT_STRESS.currentFragmentScreen -> {
-                    dataModel.posFrag.value = FragmentScreens.FRAGMENT_WORRIES.currentFragmentScreen
+                    showAnimationOrNot =false
+                    dataModel.posFrag.tryEmit(FragmentScreens.FRAGMENT_WORRIES.currentFragmentScreen)
                 }
                 FragmentScreens.FRAGMENT_WORRIES.currentFragmentScreen ->{
+                    dataModel.posFrag.tryEmit(FragmentScreens.FRAGMENT_PERSONALIZE.currentFragmentScreen)
                     binding.button4.removeAllViews()
                     binding.button7.removeAllViews()
-                    dataModel.posFrag.value = FragmentScreens.FRAGMENT_PERSONALIZE.currentFragmentScreen
                 }
                 FragmentScreens.FRAGMENT_PERSONALIZE.currentFragmentScreen -> {
-                    dataModel.posFrag.value = FragmentScreens.FRAGMENT_PAY.currentFragmentScreen
+                    dataModel.posFrag.tryEmit(FragmentScreens.FRAGMENT_PAY.currentFragmentScreen)
                     binding.button2.removeAllViews()
                     binding.button3.removeAllViews()
                     binding.button5.removeAllViews()

@@ -7,7 +7,7 @@ import com.example.onboardingsense.databinding.FragmentReviewsBinding
 
 class ReviewsAdapter(private var review: List<String>, private var reviewText: List<String>,private var userName: List<String>,)
     : RecyclerView.Adapter<ReviewsAdapter.ReviewsViewHolder>(){
-    class ReviewsViewHolder(val binding: FragmentReviewsBinding) : RecyclerView.ViewHolder(binding.root) {}
+    class ReviewsViewHolder(val binding: FragmentReviewsBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReviewsViewHolder {
         return  ReviewsViewHolder(FragmentReviewsBinding.inflate(LayoutInflater.from(parent.context), parent, false))
